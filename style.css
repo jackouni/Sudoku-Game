@@ -65,24 +65,40 @@ hr {
 }
 
 #sudoku-board {
-    margin-left: auto;
-    margin-right: auto;
     width: var(--squared-ratio);
     height: var(--squared-ratio);
+    margin-left: auto;
+    margin-right: auto;
+
     border: solid black 2px;
 }
 
 .tile {
-    width: calc(--squared-ratio / 9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: calc( calc(var(--squared-ratio) / 9 ) - 1px) ;
+  height: calc( calc(var(--squared-ratio )/ 9) - 1px) ; 
+  border: solid rgba(211, 211, 211, 0.532) 1px;
+
+  font-size: 0.5rem;
+  font-weight: bold;
 }
 
-#numbers {
+.number {
+
+}
+
+#numbers-container {
     display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    width: calc(10vw + var(--squared-ratio));
+    flex-wrap: wrap ;
+
+    width: var(--squared-ratio);
     height: 10%;
+    margin: 0 auto;
     margin-top: 2% ;
+
     border: solid black 2px;
 }
 

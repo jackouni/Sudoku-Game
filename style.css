@@ -40,5 +40,51 @@
     8. REMOVED
   */
 
+/*-------------------------------------------------*/
+
+/*-------------------------------------------------*/
+
+:root {
+    --squared-ratio: 450px;
+}
+
+body {
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+}
+
+hr {
+    margin-right: auto;
+    margin-left: auto;
+    width: 50% ;
+}
+
+#error-count {
+   color: rgb(131, 0, 0); 
+}
+
+#sudoku-board {
+    margin-left: auto;
+    margin-right: auto;
+    width: var(--squared-ratio);
+    height: var(--squared-ratio);
+    border: solid black 2px;
+}
+
+.tile {
+    width: calc(--squared-ratio / 9);
+}
+
+#numbers {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(10vw + var(--squared-ratio));
+    height: 10%;
+    margin-top: 2% ;
+    border: solid black 2px;
+}
+
 
   

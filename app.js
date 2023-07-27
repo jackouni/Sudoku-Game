@@ -1,4 +1,5 @@
-// SELECTORS AND ELEMENTS 
+// --- VARIABLES & ELEMENT-SELECTORS --- //
+
 const sudokuBoard = document.getElementById('sudoku-board') ;
 const errorCount = document.getElementById('error-count') ; 
 const numbersContainer = document.getElementById('numbers-container') ;
@@ -36,13 +37,28 @@ window.onload = function() {
     setGame() ; 
 }
 
+
+// --- GAME FUNCTIONS --- // 
+
 function setGame() {
     for (let i = 1; i < 10; i++) {
         let number = document.createElement('div')
         number.id = i 
         number.innerText = i
         number.classList.add('number')
-        sudokuBoard.appendChild(number)
         numbersContainer.appendChild(number)
     }
+
+ 
+
+    for (let row = 0; row < 9; row++) {
+        for (let col = 0; col < 9; col++) {
+            let tile = document.createElement('div')
+            tile.id = `${row}-${col}`
+            tile.classList.add('board-tile')
+            sudokuBoard.append(tile)
+        }
+    }
 }
+
+

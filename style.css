@@ -1,0 +1,44 @@
+/* Josh Comeau's CSS Reset - The Modern CSS Rest */
+/* For Reference => https://www.joshwcomeau.com/css/custom-css-reset/ */
+
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+/*
+2. Remove default margin
+  */
+  * {
+    margin: 0;
+  }
+  /*
+    3. REMOVED
+    4. Improve text rendering
+  */
+  body {
+    -webkit-font-smoothing: antialiased;
+  }
+  /*
+    5. Improve media defaults
+  */
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  /*
+    6. REMOVED
+  */
+  /*
+    7. Avoid text overflows
+  */
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  /*
+    8. REMOVED
+  */
+
+
+  

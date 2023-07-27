@@ -45,7 +45,9 @@
 /*-------------------------------------------------*/
 
 :root {
-    --squared-ratio: 450px;
+    --board-dimensions: 450px ;
+    --tile-dimensions: calc(calc(var(--board-dimensions) / 9) - 0.4px) ;
+    --borders: solid black 2px ; 
 }
 
 body {
@@ -65,21 +67,21 @@ hr {
 }
 
 #sudoku-board {
-    width: var(--squared-ratio);
-    height: var(--squared-ratio);
+    width: var(--board-dimensions);
+    height: var(--board-dimensions);
     margin-left: auto;
     margin-right: auto;
 
-    border: solid black 2px;
+    border: var(--borders);
 }
 
-.tile {
+.board-tile {
   display: flex;
   justify-content: center;
   align-items: center;
 
-  width: calc( calc(var(--squared-ratio) / 9 ) - 1px) ;
-  height: calc( calc(var(--squared-ratio )/ 9) - 1px) ; 
+  width: var(--tile-dimensions) ; 
+  height:  var(--tile-dimensions) ; 
   border: solid rgba(211, 211, 211, 0.532) 1px;
 
   font-size: 0.5rem;
@@ -87,19 +89,28 @@ hr {
 }
 
 .number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  width: var(--tile-dimensions);
+  height: 100% ; 
+  border: solid rgba(211, 211, 211, 0.532) 1px;
+
+  font-size: 0.5rem;
+  font-weight: bold;
 }
 
 #numbers-container {
     display: flex;
     flex-wrap: wrap ;
 
-    width: var(--squared-ratio);
-    height: 10%;
+    width: var(--board-dimensions);
+    height: var(--tile-dimensions) ;
     margin: 0 auto;
     margin-top: 2% ;
 
-    border: solid black 2px;
+    border: var(--borders);
 }
 
 

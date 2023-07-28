@@ -3,10 +3,11 @@
 const sudokuBoard = document.getElementById('sudoku-board') ;
 const errorCount = document.getElementById('error-count') ; 
 const numbersContainer = document.getElementById('numbers-container') ;
-const solveButton = document.getElementById('solve-button') ;
+const solveButton = document.getElementById('solve-btn') ;
 
 let numSelected = null ;
 let tileSelected = null ;
+let boardSolved = false ; 
 
 let errors = 0 ; 
 
@@ -74,6 +75,23 @@ function setGame() {
     }
 }
 
+function resetGame() {
+    if (boardSolved == true){
+        let tiles = document.getElementsByClassName('board-tile')
+        while(tiles.length > 0){
+            tiles[0].parentNode.removeChild(tiles[0]);
+        }
+        let numberTiles = document.getElementsByClassName('number')
+        while (numberTiles.length > 0) {
+            numberTiles[0].parentNode.removeChild(numberTiles[0]);
+
+        }
+    }
+    resetButton.style.display = 'none'
+    solveButton.style.display = 'inline'
+    setGame()
+}
+
 function selectNumber() {
     if (numSelected != null) {
         numSelected.classList.remove('selected')
@@ -101,6 +119,26 @@ function selectTile() {
         }
     } 
 }
+
+function solveBoard() {
+    let allBoardTiles = document.querySelectorAll('.board-tile');
+    for (let i = 0; i < allBoardTiles.length; i++) {
+        let tileIndex = allBoardTiles[i].id.split('-') ;
+        let solution = boardSolution[tileIndex[0]][tileIndex[1]] ; 
+        allBoardTiles[i].innerText = solution; 
+    }
+    solveButton.style.display = 'none'
+
+    boardSolved = true ;
+    resetButton = document.createElement('button')
+    resetButton.id = 'reset-btn'
+    resetButton.innerText = 'Reset?'
+    document.querySelector('body').appendChild(resetButton)
+    resetButton.addEventListener('click', resetGame)
+}
+
+solveButton.addEventListener('click', solveBoard)
+
 
 
 

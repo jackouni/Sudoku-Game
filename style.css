@@ -71,8 +71,8 @@ hr {
 
 #sudoku-board {
   display: grid ;
-  grid-template-rows: repeat(9, 1fr);
-  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, var(--tile-dimensions));
+  grid-template-columns: repeat(9, var(--tile-dimensions));
 
   width: var(--board-dimensions);
   height: var(--board-dimensions);

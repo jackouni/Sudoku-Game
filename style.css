@@ -45,15 +45,18 @@
 /*-------------------------------------------------*/
 
 :root {
-    --board-dimensions: 450px ;
-    --tile-dimensions: calc(calc(var(--board-dimensions) / 9) - 0.5px) ;
-    --borders: solid rgb(0, 0, 0) 2px ; 
+
 }
 
 body {
-    text-align: center;
-    width: 100%;
-    height: 100vh;
+  --board-dimensions: 25vw ;
+  --tile-dimensions: calc(calc(var(--board-dimensions) / 9) - 0.5px) ;
+  --borders: solid rgb(0, 0, 0) 2px ; 
+
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 hr {
@@ -89,7 +92,7 @@ hr {
   height:  var(--tile-dimensions) ; 
   border: solid rgba(211, 211, 211, 0.532) 1px;
 
-  font-size: 1rem;
+  font-size: 1vw;
   font-weight: bold;
 }
 
@@ -102,7 +105,7 @@ hr {
   height: 100% ; 
   border: solid rgba(211, 211, 211, 0.532) 1px;
 
-  font-size: 1rem;
+  font-size: 1vw;
   font-weight: bold;
 
   transition: 0.2s;
@@ -129,12 +132,12 @@ button {
 }
 
 .selected {
-  font-size: 1.2rem;
+  font-size: 1.2vw;
   background-color: rgb(176, 176, 176);
 }
 
 .number:hover {
-  font-size: 1.2rem;
+  font-size: 1.2vw;
 }
 
 .starter-numbers {

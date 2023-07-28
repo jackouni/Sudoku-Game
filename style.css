@@ -46,7 +46,7 @@
 
 :root {
     --board-dimensions: 450px ;
-    --tile-dimensions: calc(calc(var(--board-dimensions) / 9) - 0.4px) ;
+    --tile-dimensions: calc(calc(var(--board-dimensions) / 9) - 0.5px) ;
     --borders: solid rgb(0, 0, 0) 2px ; 
 }
 
@@ -104,6 +104,8 @@ hr {
 
   font-size: 1rem;
   font-weight: bold;
+
+  transition: 0.2s;
 }
 
 #numbers-container {
@@ -126,8 +128,13 @@ button {
   border: var(--borders)
 }
 
-.selected-number {
+.selected {
+  font-size: 1.2rem;
   background-color: rgb(176, 176, 176);
+}
+
+.number:hover {
+  font-size: 1.2rem;
 }
 
 .starter-numbers {

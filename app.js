@@ -45,20 +45,46 @@ function setGame() {
         let number = document.createElement('div')
         number.id = i 
         number.innerText = i
+        number.addEventListener('click', selectNumber)  
         number.classList.add('number')
         numbersContainer.appendChild(number)
     }
 
- 
-
     for (let row = 0; row < 9; row++) {
         for (let col = 0; col < 9; col++) {
             let tile = document.createElement('div')
+            tile.addEventListener('click', selectTile)
             tile.id = `${row}-${col}`
             tile.classList.add('board-tile')
             sudokuBoard.append(tile)
+
+            if (boardInit[row][col] != '-') {
+                tile.innerText = boardInit[row][col];
+                tile.classList.add('starter-numbers')
+            }
         }
     }
 }
+
+function selectNumber() {
+    if (numSelected != null) {
+        numSelected.classList.remove('selected-number')
+     } 
+     numSelected = this
+     numSelected.classList.add('selected-number')
+}
+
+function selectTile() {
+    if (numSelected) {
+        if (this.innerText != ""){
+            return ; 
+        }
+        else {
+            this.innerText = numSelected.id  ;
+        }
+     } 
+}
+
+
 
 

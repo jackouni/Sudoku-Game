@@ -3,6 +3,7 @@
 const sudokuBoard = document.getElementById('sudoku-board') ;
 const errorCount = document.getElementById('error-count') ; 
 const numbersContainer = document.getElementById('numbers-container') ;
+const solveButton = document.getElementById('solve-button') ;
 
 let numSelected = null ;
 let tileSelected = null ;
@@ -75,31 +76,33 @@ function setGame() {
 
 function selectNumber() {
     if (numSelected != null) {
-        numSelected.classList.remove('selected-number')
+        numSelected.classList.remove('selected')
      } 
      numSelected = this
-     numSelected.classList.add('selected-number')
+     numSelected.classList.add('selected')
 }
 
 function selectTile() {
     if (numSelected) {
         if (this.innerText != ""){
             return ; 
+        } else {
+            let tileIndex = this.id.split('-') ;
+            let solution = boardSolution[tileIndex[0]][tileIndex[1]] ; 
+    
+            if (numSelected.id == solution) {
+                this.innerText = numSelected.id ;
+                return ;
+            }
+            else {
+            errors++ ;
+            errorCount.innerText = errors ;
+            }
         }
-        this.innerText = numSelected.id  
-
-        let tileIndex = this.id.split('-') ;
-        let solution = boardSolution[tileIndex[0]][tileIndex[1]] ; 
-
-        if (this.innerText == solution) {
-            return ;
-        }
-        else 
-        errors++
-        errorCount.innerText = errors
-
-     } 
+    } 
 }
+
+
 
 
 

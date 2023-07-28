@@ -62,6 +62,13 @@ function setGame() {
                 tile.innerText = boardInit[row][col];
                 tile.classList.add('starter-numbers')
             }
+
+            if (row == 2 || row == 5){
+                tile.style.borderBottom = 'var(--borders)'
+            }
+            if (col == 3 || col == 6) {
+                tile.style.borderLeft = 'var(--borders)'
+            }
         }
     }
 }
@@ -79,9 +86,18 @@ function selectTile() {
         if (this.innerText != ""){
             return ; 
         }
-        else {
-            this.innerText = numSelected.id  ;
+        this.innerText = numSelected.id  
+
+        let tileIndex = this.id.split('-') ;
+        let solution = boardSolution[tileIndex[0]][tileIndex[1]] ; 
+
+        if (this.innerText == solution) {
+            return ;
         }
+        else 
+        errors++
+        errorCount.innerText = errors
+
      } 
 }
 

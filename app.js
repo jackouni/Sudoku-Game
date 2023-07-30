@@ -43,7 +43,7 @@ window.onload = function() {
 // --- GAME FUNCTIONS --- // 
 
 function setGame() {
-    for (let i = 1; i < 10; i++) {
+    for (let i = 1; i < 10; i++) { // Create the number tiles for the number selection row.
         let number = document.createElement('div')
         number.id = i 
         number.innerText = i
@@ -52,7 +52,7 @@ function setGame() {
         numbersContainer.appendChild(number)
     }
 
-    for (let row = 0; row < 9; row++) {
+    for (let row = 0; row < 9; row++) { // Create the tiles for the Sudoku Board.
         for (let col = 0; col < 9; col++) {
             let tile = document.createElement('div')
             tile.addEventListener('click', selectTile)
@@ -77,18 +77,23 @@ function setGame() {
 
 function resetGame() {
     if (boardSolved == true){
-        let tiles = document.getElementsByClassName('board-tile')
+        let tiles = document.getElementsByClassName('board-tile') ;
         while(tiles.length > 0){
-            tiles[0].parentNode.removeChild(tiles[0]);
+            tiles[0].parentNode.removeChild(tiles[0]) ;
         }
-        let numberTiles = document.getElementsByClassName('number')
+        let numberTiles = document.getElementsByClassName('number') ;
         while (numberTiles.length > 0) {
-            numberTiles[0].parentNode.removeChild(numberTiles[0]);
+            numberTiles[0].parentNode.removeChild(numberTiles[0]) ;
 
         }
     }
-    resetButton.style.display = 'none'
-    solveButton.style.display = 'inline'
+    resetButton.style.display = 'none' ;
+    solveButton.style.display = 'inline' ;
+
+    errors = 0 ;
+    errorCount.innerText = '0'
+
+
     setGame()
 }
 
@@ -121,23 +126,23 @@ function selectTile() {
 }
 
 function solveBoard() {
-    let allBoardTiles = document.querySelectorAll('.board-tile');
+    let allBoardTiles = document.querySelectorAll('.board-tile') ;
     for (let i = 0; i < allBoardTiles.length; i++) {
         let tileIndex = allBoardTiles[i].id.split('-') ;
-        let solution = boardSolution[tileIndex[0]][tileIndex[1]] ; 
-        allBoardTiles[i].innerText = solution; 
+        let solution = boardSolution[tileIndex[0]][tileIndex[1]] ;
+        allBoardTiles[i].innerText = solution  
     }
-    solveButton.style.display = 'none'
+    solveButton.style.display = 'none' ;
 
     boardSolved = true ;
-    resetButton = document.createElement('button')
-    resetButton.id = 'reset-btn'
-    resetButton.innerText = 'Reset?'
-    document.querySelector('body').appendChild(resetButton)
-    resetButton.addEventListener('click', resetGame)
+    resetButton = document.createElement('button') ;
+    resetButton.id = 'reset-btn' ;
+    resetButton.innerText = 'Reset' ;
+    document.getElementById('header').appendChild(resetButton) ;
+    resetButton.addEventListener('click', resetGame) ;
 }
 
-solveButton.addEventListener('click', solveBoard)
+solveButton.addEventListener('click', solveBoard) ;
 
 
 

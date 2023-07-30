@@ -44,12 +44,9 @@
 
 /*-------------------------------------------------*/
 
-:root {
-
-}
 
 body {
-  --board-dimensions: 25vw ;
+  --board-dimensions: clamp(350px, 33vw, 500px) ;
   --tile-dimensions: calc(calc(var(--board-dimensions) / 9) - 0.5px) ;
   --borders: solid rgb(0, 0, 0) 2px ; 
 
@@ -59,24 +56,47 @@ body {
   overflow: hidden;
 }
 
+h1 {
+  margin: 1%;
+}
+
 hr {
-    margin-right: auto;
-    margin-left: auto;
-    width: 50% ;
+  margin-right: auto;
+  margin-left: auto;
+  width: 50% ;
+}
+
+#header {
+  display: flex ;
+  align-items: center ;
+  justify-content:center ;
+  margin-left:auto;
+  margin-right: auto;
+  gap: 10%;
+  width: max(350px, 50%);
+  height: 10% ;
 }
 
 #error-count {
-   color: rgb(131, 0, 0); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100%;
+  width: max(40px, var(--tile-dimensions));
+  height: max(40px, var(--tile-dimensions));
+  margin-top: 1%;
+  color: white;
+  border-radius: 5px;
+  background-color: rgb(255, 148, 148);
 }
 
 #sudoku-board {
   display: grid ;
-  grid-template-rows: repeat(9, var(--tile-dimensions));
-  grid-template-columns: repeat(9, var(--tile-dimensions));
-
+  grid-template-rows: repeat(9, 1fr);
+  grid-template-columns: repeat(9, 1fr);
   width: var(--board-dimensions);
   height: var(--board-dimensions);
-  margin-top: 10vh;
+  margin-top: 2.5%;
   margin-left: auto;
   margin-right: auto;
 
@@ -88,11 +108,9 @@ hr {
   justify-content: center;
   align-items: center;
 
-  width: var(--tile-dimensions) ; 
-  height:  var(--tile-dimensions) ; 
   border: solid rgba(211, 211, 211, 0.532) 1px;
 
-  font-size: 1vw;
+  font-size: 100%;
   font-weight: bold;
 }
 
@@ -100,48 +118,59 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  width: var(--tile-dimensions);
   height: 100% ; 
   border: solid rgba(211, 211, 211, 0.532) 1px;
 
-  font-size: 1vw;
+  font-size: 100%;
   font-weight: bold;
 
   transition: 0.2s;
 }
 
 #numbers-container {
-    display: flex;
-    flex-wrap: wrap ;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(9, 1fr);
 
-    width: var(--board-dimensions);
-    height: var(--tile-dimensions) ;
-    margin: 0 auto;
-    margin-top: 2% ;
 
-    border: var(--borders);
+  width: var(--board-dimensions);
+  height: max(40px, var(--tile-dimensions)) ;
+  margin: 0 auto;
+  margin-top: 2.5% ;
+
+  border: var(--borders);
 }
 
 button {
-  margin-top: 1vh;
-  height: var(--tile-dimensions);
+  margin-top: 1%;
+  height: max(40px, var(--tile-dimensions));
   width: calc(var(--board-dimensions) / 2.5);
   background-color: white ;
-  border: var(--borders)
+  border: var(--borders) ;
+  font-size: 100%;
+
+  transition: 0.2s ;
 }
 
 .selected {
-  font-size: 1.2vw;
+  font-size: 125%;
   background-color: rgb(176, 176, 176);
 }
 
 .number:hover {
-  font-size: 1.2vw;
+  font-size: 125%;
 }
 
 .starter-numbers {
   background-color: rgb(242, 242, 242);
+}
+
+#solve-btn:hover {
+  font-size: 125%;
+}
+
+#reset-btn:hover {
+  font-size: 125%;
 }
 
 

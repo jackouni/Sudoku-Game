@@ -1,3 +1,6 @@
+import { initBoards, solveBoards } from "./boards.js" ;
+console.log(initBoards)
+console.log(solveBoards)
 // --- VARIABLES & ELEMENT-SELECTORS --- //
 
 const sudokuBoard = document.getElementById('sudoku-board') ;
@@ -5,7 +8,7 @@ const errorCount = document.getElementById('error-count') ;
 const numbersContainer = document.getElementById('numbers-container') ;
 const solveButton = document.getElementById('solve-btn') ;
 
-let numSelected = null ;
+let numSelected = null ; 
 let tileSelected = null ;
 let boardSolved = false ; 
 

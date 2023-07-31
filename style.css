@@ -44,27 +44,26 @@
 
 /*-------------------------------------------------*/
 
-#img-wrapper {
-  position: absolute;
-  top: 2%;
-  z-index: -1;
-  width: 100vw;
-  height: 100vh;
-  background-image: url(background-img.png);
+html, body {
+  height: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  --board-dimensions: clamp(350px, 33vw, 500px) ;
+  --board-dimensions: max(310px, 33vw) ;
   --tile-dimensions: calc(calc(var(--board-dimensions) / 9) - 0.5px) ;
   --borders: solid rgb(0, 0, 0) 2px ; 
   --board-radius: 5px ;
 
 
   font-family: 'Courier New', Courier, monospace;
+  background-color:#d4e5ce;
   text-align: center;
   width: 100vw;
-  height: 105vh;
-  overflow: hidden;
+  height: 100vh;
+  overflow-y: scroll;
 }
 
 h1 {
@@ -118,7 +117,7 @@ hr {
   grid-template-columns: repeat(9, 1fr);
   width: var(--board-dimensions);
   height: var(--board-dimensions);
-  margin-top: 2.5%;
+  margin-top: min(45px, 2.5vw) ;
   margin-left: auto;
   margin-right: auto;
   border-radius: var(--board-radius);
@@ -162,7 +161,7 @@ hr {
   width: var(--board-dimensions);
   height: max(40px, var(--tile-dimensions)) ;
   margin: 0 auto;
-  margin-top: 2.5vh ;
+  margin-top: max(45px, 2vw) ;
 
   border: var(--borders);
 }

@@ -1,4 +1,4 @@
-const initBoards = [
+export let initializedBoards = [
     [
         "--74916-5",
         "2---6-3-9",
@@ -56,7 +56,7 @@ const initBoards = [
     ]
 ] ;
 
-const solveBoards = [
+export let solvedBoards = [
     [
         "387491625",
         "241568379",
@@ -114,5 +114,4 @@ const solveBoards = [
     ]
 ] ;
 
-export { initBoards, solveBoards } ;
 

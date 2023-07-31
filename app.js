@@ -1,20 +1,19 @@
-import { initBoards, solveBoards } from "./boards.js" ;
-console.log(initBoards)
-console.log(solveBoards)
+import { initializedBoards, solvedBoards } from './boards.js' ;
 // --- VARIABLES & ELEMENT-SELECTORS --- //
 
 const sudokuBoard = document.getElementById('sudoku-board') ;
 const errorCount = document.getElementById('error-count') ; 
 const numbersContainer = document.getElementById('numbers-container') ;
 const solveButton = document.getElementById('solve-btn') ;
+let resetButton = document.getElementById('reset-btn') ; 
+const newGameButton = document.getElementById('new-game-btn') ;
 
 let numSelected = null ; 
-let tileSelected = null ;
 let boardSolved = false ; 
 
 let errors = 0 ; 
 
-let boardInit = [
+let initialBoard = [
         "--74916-5",
         "2---6-3-9",
         "-----7-1-",
@@ -45,6 +44,26 @@ window.onload = function() {
 
 // --- GAME FUNCTIONS --- // 
 
+function initializeBoard() {
+    console.log(initializedBoards)
+    console.log(solvedBoards)
+
+    let randomIndex = randomNum() ; // Picks random index number from 1 - 5
+    let boardPicked = initializedBoards[randomIndex]
+    let solutionPicked = solvedBoards[randomIndex]
+    if (boardPicked != initialBoard) {
+        initialBoard = boardPicked
+        boardSolution = solutionPicked
+        resetGame() ;
+    } else {
+        initializeBoard() ;
+    }
+}
+
+function randomNum() {
+    return Math.floor(Math.random() * 5)
+}
+
 function setGame() {
     for (let i = 1; i < 10; i++) { // Create the number tiles for the number selection row.
         let number = document.createElement('div')
@@ -63,14 +82,15 @@ function setGame() {
             tile.classList.add('board-tile')
             sudokuBoard.append(tile)
 
-            if (boardInit[row][col] != '-') {
-                tile.innerText = boardInit[row][col];
+            if (initialBoard[row][col] != '-') {
+                tile.innerText = initialBoard[row][col];
                 tile.classList.add('starter-numbers')
             }
 
             if (row == 2 || row == 5){
                 tile.style.borderBottom = 'var(--borders)'
             }
+
             if (col == 3 || col == 6) {
                 tile.style.borderLeft = 'var(--borders)'
             }
@@ -79,26 +99,27 @@ function setGame() {
 }
 
 function resetGame() {
-    if (boardSolved == true){
-        let tiles = document.getElementsByClassName('board-tile') ;
-        while(tiles.length > 0){
-            tiles[0].parentNode.removeChild(tiles[0]) ;
-        }
-        let numberTiles = document.getElementsByClassName('number') ;
-        while (numberTiles.length > 0) {
-            numberTiles[0].parentNode.removeChild(numberTiles[0]) ;
 
-        }
+    let tiles = document.getElementsByClassName('board-tile') ;
+    while (tiles.length > 0) {
+        tiles[0].parentNode.removeChild(tiles[0]) ;
     }
+
+    let numberTiles = document.getElementsByClassName('number') ;
+    while (numberTiles.length > 0) {
+        numberTiles[0].parentNode.removeChild(numberTiles[0]) ;
+    }
+
+    boardSolved = false ;
     resetButton.style.display = 'none' ;
     solveButton.style.display = 'inline' ;
-
     errors = 0 ;
-    errorCount.innerText = '0'
+    errorCount.innerText = '0' ;
 
-
-    setGame()
+    setGame() ; 
 }
+
+
 
 function selectNumber() {
     if (numSelected != null) {
@@ -135,17 +156,17 @@ function solveBoard() {
         let solution = boardSolution[tileIndex[0]][tileIndex[1]] ;
         allBoardTiles[i].innerText = solution  
     }
-    solveButton.style.display = 'none' ;
 
     boardSolved = true ;
-    resetButton = document.createElement('button') ;
-    resetButton.id = 'reset-btn' ;
-    resetButton.innerText = 'Reset' ;
-    document.getElementById('header').appendChild(resetButton) ;
-    resetButton.addEventListener('click', resetGame) ;
+    solveButton.style.display = 'none' ;
+    resetButton.style.display = 'inline' ;
 }
 
+// --- EVENT LISTENERS --- // 
+
+resetButton.addEventListener('click', resetGame) ;
 solveButton.addEventListener('click', solveBoard) ;
+newGameButton.addEventListener('click', initializeBoard) ;
 
 
 

@@ -52,7 +52,7 @@ html, body {
 }
 
 body {
-  --board-dimensions: max(310px, 33vw) ;
+  --board-dimensions: max(290px, 33vw) ;
   --tile-dimensions: calc(calc(var(--board-dimensions) / 9) - 0.5px) ;
   --borders: solid rgb(0, 0, 0) 2px ; 
   --board-radius: 5px ;
@@ -159,7 +159,7 @@ hr {
 
 
   width: var(--board-dimensions);
-  height: max(40px, var(--tile-dimensions)) ;
+  height: max(15px, var(--tile-dimensions)) ;
   margin: 0 auto;
   margin-top: max(45px, 2vw) ;
 

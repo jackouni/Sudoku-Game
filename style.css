@@ -44,26 +44,47 @@
 
 /*-------------------------------------------------*/
 
+#img-wrapper {
+  position: absolute;
+  top: 2%;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  background-image: url(background-img.png);
+}
 
 body {
   --board-dimensions: clamp(350px, 33vw, 500px) ;
   --tile-dimensions: calc(calc(var(--board-dimensions) / 9) - 0.5px) ;
   --borders: solid rgb(0, 0, 0) 2px ; 
+  --board-radius: 5px ;
 
+
+  font-family: 'Courier New', Courier, monospace;
   text-align: center;
   width: 100vw;
-  height: 100vh;
+  height: 105vh;
   overflow: hidden;
 }
 
 h1 {
-  margin: 1%;
+  font-size: 200%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 10%;
+  background-color: rgb(255, 241, 223);
+
+  transition: 0.3s;
 }
 
 hr {
   margin-right: auto;
   margin-left: auto;
-  width: 50% ;
+  background-color: black;
+  height: 1%;
+  width: 100% ;
 }
 
 #header {
@@ -86,12 +107,13 @@ hr {
   height: max(40px, var(--tile-dimensions));
   margin-top: 1%;
   color: white;
-  border-radius: 5px;
+  border-radius: var(--board-radius);
   background-color: rgb(255, 148, 148);
 }
 
 #sudoku-board {
   display: grid ;
+  background-color: #fff6ed;
   grid-template-rows: repeat(9, 1fr);
   grid-template-columns: repeat(9, 1fr);
   width: var(--board-dimensions);
@@ -99,6 +121,7 @@ hr {
   margin-top: 2.5%;
   margin-left: auto;
   margin-right: auto;
+  border-radius: var(--board-radius);
 
   border: var(--borders);
 }
@@ -107,6 +130,7 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #fff6ed;
 
   border: solid rgba(211, 211, 211, 0.532) 1px;
 
@@ -119,6 +143,7 @@ hr {
   justify-content: center;
   align-items: center;
   height: 100% ; 
+  background-color:  #fff6ed;
   border: solid rgba(211, 211, 211, 0.532) 1px;
 
   font-size: 100%;
@@ -131,12 +156,13 @@ hr {
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: repeat(9, 1fr);
+  border-radius: var(--board-radius);
 
 
   width: var(--board-dimensions);
   height: max(40px, var(--tile-dimensions)) ;
   margin: 0 auto;
-  margin-top: 2.5% ;
+  margin-top: 2.5vh ;
 
   border: var(--borders);
 }
@@ -145,32 +171,33 @@ button {
   margin-top: 1%;
   height: max(40px, var(--tile-dimensions));
   width: calc(var(--board-dimensions) / 2.5);
-  background-color: white ;
+  background-color: #aec2ab ;
+  color: white;
   border: var(--borders) ;
+  border-radius: var(--board-radius);
   font-size: 100%;
 
   transition: 0.2s ;
 }
 
 .selected {
-  font-size: 125%;
   background-color: rgb(176, 176, 176);
 }
 
-.number:hover {
-  font-size: 125%;
-}
-
 .starter-numbers {
-  background-color: rgb(242, 242, 242);
+  background-color: rgb(255, 255, 255);
 }
 
 #reset-btn {
   display: none;
 }
 
-button:hover {
+.number:hover, button:hover, .selected {
   font-size: 120%; 
+}
+
+h1:hover {
+  font-size: 210%;
 }
 
 

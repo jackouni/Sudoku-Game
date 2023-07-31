@@ -165,13 +165,14 @@ button {
   background-color: rgb(242, 242, 242);
 }
 
-#solve-btn:hover {
-  font-size: 125%;
+#reset-btn {
+  display: none;
 }
 
-#reset-btn:hover {
-  font-size: 125%;
+button:hover {
+  font-size: 120%; 
 }
+
 
 
   
